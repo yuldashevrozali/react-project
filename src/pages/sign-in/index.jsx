@@ -3,32 +3,29 @@ import { Button, message } from 'antd';
 import Inputs from '../../components/inputs';
 import male from '../assets/male.svg';
 import logo from '../assets/logo.svg';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios'; 
+import { Link } from 'react-router-dom';
+import axios from 'axios'; // Axiosni import qiling
 
 export default function Signin() {
-  const pathname = useNavigate('/')
-
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
   async function handleClick() {
     try {
-      const response = await axios.post('https://strapi-store-server.onrender.com/api/auth/local', {
+      const response = await axios.post(`https://strapi-store-server.onrender.com/api/auth/local`, {
         identifier: email,
         password: password
       });
 
       const data = response.data;
-      console.log(21,data);
+      console.log(data);
 
       const username = data.user ? data.user.username : '';
 
       message.success(`Welcome, ${username}!`);
-      pathname('/home'); 
     } catch (error) {
       console.error('There was an error!', error);
-      // message.error('There was an error during login. Please try again.');
+      message.error('There was an error during login. Please try again.');
     }
   }
 
