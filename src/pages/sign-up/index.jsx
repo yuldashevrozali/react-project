@@ -46,6 +46,14 @@ export default function Signup() {
             pathname('/signin'); 
         } catch (error) {
             console.error('Error during registration:', error);
+            if (error.response) {
+                console.log('Server responded with:', error.response.data);
+                console.log('Status code:', error.response.status);
+                message.error('Server error. Please try again later.');
+            } else {
+                console.log('Error:', error.message);
+                message.error('An error occurred. Please try again later.');
+            }
         }
     }
 
