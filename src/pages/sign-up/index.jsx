@@ -51,11 +51,10 @@ export default function Signup() {
                 console.log('Status code:', error.response.status);
                 message.error('Server error. Please try again later.');
             } else if (error.request) {
-               
                 console.log('No response received:', error.request);
                 message.error('No response received from the server. Please try again later.');
             } else {
-                
+        
                 console.log('Error:', error.message);
                 message.error('An error occurred. Please try again later.');
             }
