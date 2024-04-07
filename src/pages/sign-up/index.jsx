@@ -6,13 +6,12 @@ import male from '../assets/male.svg';
 import logo from '../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Signup() {
-    const pathname = useNavigate('/')
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    const navigate = useNavigate(); // `useNavigate` funksiyasini to'g'ri ishlatish
+    const [user, setUser] = useState<string>(''); // `user` o'zgaruvchisining tipini stringga aniqlash
+    const [password, setPassword] = useState<string>(''); // `password` o'zgaruvchisining tipini stringga aniqlash
+    const [email, setEmail] = useState<string>(''); // `email` o'zgaruvchisining tipini stringga aniqlash
 
     function validate() {
         if (!user.trim() || !password.trim() || !email.trim()) {
@@ -34,7 +33,8 @@ export default function Signup() {
         }
 
         try {
-            const response = await axios.post(apiUrl, {
+            const apiUrl = import.meta.env.VITE_API_URL; // `apiUrl` o'zgaruvchisiga qiymat berish
+            const response = await axios.post(apiUrl, { // `axios.post` funksiyasida `apiUrl` o'zgaruvchisini ishlatish
                 username: user,
                 password,
                 email,
@@ -43,7 +43,7 @@ export default function Signup() {
             console.log('Registration successful:', response.data);
             console.log(response);
             message.success('Registration successful!');
-            pathname('/signin'); 
+            navigate('/signin'); // `navigate` o'zgaruvchisiga `useNavigate` funksiyasidan foydalanish
         } catch (error) {
             console.error('Error during registration:', error);
             if (error.response) {
@@ -57,8 +57,6 @@ export default function Signup() {
         }
     }
 
-
-
     return (
         <div className='frame'>
             <div className="frame-left">
@@ -71,7 +69,7 @@ export default function Signup() {
                     <Inputs onChange={e => setPassword(e.target.value)} label='Parol' type='password' />
                     <Button onClick={handleClick} type="primary">Ro'yhatdan o'tish</Button>
                     <p id='link' style={{ marginTop: '-150px' }}>You have already account? <Link to='/signin'>Login</Link></p>
-                    <p id='vim'>Copyright ©  2024 Vim kompaniyasi</p>
+                    <p id='vim'>Copyright © 2024 Vim kompaniyasi</p>
                 </form>
             </div>
             <div className="frame-right">
