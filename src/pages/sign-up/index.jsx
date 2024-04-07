@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Signup() {
-    const navigate = useNavigate(); // `useNavigate` funksiyasini to'g'ri ishlatish
-    const [user, setUser] = useState<string>(''); // `user` o'zgaruvchisining tipini stringga aniqlash
-    const [password, setPassword] = useState<string>(''); // `password` o'zgaruvchisining tipini stringga aniqlash
-    const [email, setEmail] = useState<string>(''); // `email` o'zgaruvchisining tipini stringga aniqlash
+    const navigate = useNavigate(); 
+    const [user, setUser] = useState<string>(''); 
+    const [password, setPassword] = useState<string>('');
+    const [email, setEmail] = useState<string>(''); 
 
     function validate() {
         if (!user.trim() || !password.trim() || !email.trim()) {
@@ -33,8 +33,8 @@ export default function Signup() {
         }
 
         try {
-            const apiUrl = import.meta.env.VITE_API_URL; // `apiUrl` o'zgaruvchisiga qiymat berish
-            const response = await axios.post(apiUrl, { // `axios.post` funksiyasida `apiUrl` o'zgaruvchisini ishlatish
+            const apiUrl = import.meta.env.VITE_API_URL; 
+            const response = await axios.post(apiUrl, {
                 username: user,
                 password,
                 email,
@@ -43,7 +43,7 @@ export default function Signup() {
             console.log('Registration successful:', response.data);
             console.log(response);
             message.success('Registration successful!');
-            navigate('/signin'); // `navigate` o'zgaruvchisiga `useNavigate` funksiyasidan foydalanish
+            navigate('/signin');
         } catch (error) {
             console.error('Error during registration:', error);
             if (error.response) {
