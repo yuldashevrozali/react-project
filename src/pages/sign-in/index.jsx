@@ -50,7 +50,7 @@ export default function Signin() {
       <div className="frame-left">
         <form>
           <img src={logo} alt="rasm yetib kelmadi" />
-          <h1>Xush kelibsiz!</h1>
+          <h1>Xush kelibsiz !</h1>
           <p>Tizimga kirish uchun ma'lumotlarni to'ldring.</p>
           <Inputs onChange={e => setLogin(e.target.value)} label='login' type='rexr' />
           <Inputs onChange={e => setPassword(e.target.value)} label='Parol' type='password' />
