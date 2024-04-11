@@ -61,7 +61,7 @@ export default function Signin() {
         </form>
       </div>
       <div className="frame-right">
-        <img src={male} alt="rasm yetib kelmadi" />
+        <img src={male} alt="rasm yetib kelmadiii" />
       </div>
     </div>
   );
