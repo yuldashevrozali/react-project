@@ -6,7 +6,6 @@ import male from '../assets/male.svg';
 import logo from '../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-const apiUrl2 = import.meta.env.VITE_API_URL2;
 
 export default function Signin() {
   const pathname = useNavigate('/')
@@ -17,6 +16,7 @@ export default function Signin() {
   async function handleClick() {
 
     try {
+      const apiUrl2 = import.meta.env.VITE_API_URL2; 
       const response = await axios.post(apiUrl2, {
         username: Login,
         password:password
@@ -25,7 +25,6 @@ export default function Signin() {
       console.log('Signin successful:', response.data);
       console.log(26,response);
       const token = response.data.accessToken;
-      const usernameset = response.data.username;
       message.success('Tizimga kiritish muvaffaqiyatli!');
       localStorage.setItem('user', (token))
       localStorage.setItem('username', (Login))
@@ -56,7 +55,7 @@ export default function Signin() {
           <Inputs onChange={e => setLogin(e.target.value)} label='login' type='rexr' />
           <Inputs onChange={e => setPassword(e.target.value)} label='Parol' type='password' />
           <Button onClick={handleClick} type="primary">Kirish</Button>
-          <p id='link' style={{ marginTop: '-150px' }}>Akkauntiz yo'qmi? <Link to='/signup'>Ro'yhatdan o'ting</Link></p>
+          <p id='link' style={{ marginTop: '-150px' }}>Akkauntiz yo'qmi? <Link to='/'>Ro'yhatdan o'ting</Link></p>
           <p id='vim'>Hak tushgan ©  2024 Vim kompaniyasi</p>
         </form>
       </div>

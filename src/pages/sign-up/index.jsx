@@ -9,9 +9,9 @@ import axios from 'axios';
 
 export default function Signup() {
     const navigate = useNavigate(); 
-    const [user, setUser] = useState<string>(''); 
-    const [password, setPassword] = useState<string>('');
-    const [email, setEmail] = useState<string>(''); 
+    const [user, setUser] = useState(''); 
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState(''); 
 
     function validate() {
         if (!user.trim() || !password.trim() || !email.trim()) {
